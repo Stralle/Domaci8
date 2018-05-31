@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recipes - Web 8</title>
+    <style>
+        table {
+            width: 100%;
+        }
+
+		tr {
+		}
+		
+		table, td, th, tr {
+			border: solid;	
+			text-align: center;
+		}
+		
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-route.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+<body ng-app="web">
+	<div ng-controller="CtrlUser">
+	
+	    <form novalidate>
+	        Username: <br> <input type="text" ng-model="userReg.name"> <br>
+	        Password: <br> <input type="password" ng-model="userReg.pass"> <br>
+	        Mail: <br> <input type="email" ng-model="userReg.mail"> <br>
+	        <button ng-click="register()">Register</button>
+	    </form>
+	
+	    <p>{{msgReg}}</p>
+	
+	    <form novalidate>
+	        Username: <br> <input type="text" ng-model="userLog.name"> <br>
+	        Password: <br> <input type="password" ng-model="userLog.pass"> <br>
+	        <button ng-click="login()">Log In</button>
+	    </form>
+	
+	    <p>{{msgLog}}</p>
+	</div>
+	
+	
+	
+	<div ng-controller="CtrlRecipe">
+	
+	    <form novalidate>
+	    	<label>Insert hundred</label>
+	        <input type="number" ng-model="hundred">
+	        <button ng-click="nextHundred()">Load</button>
+	    </form>
+	
+	    <br>
+	
+	    <form novalidate>
+	        <button ng-click="getRecipes()">Load all recipes</button>
+	    </form>
+	
+	    <br>
+	    <form novalidate>
+	        Name: <br> <input type="text" ng-model="recipe.name"> <br>
+	        Description: <br> <input type="text" ng-model="recipe.desc"> <br>
+	        <button ng-click="addRecipe()">Add recipe</button>
+	    </form>
+	    <p>{{msgAdd}}</p>
+	    <br>
+	    <form novalidate>
+	        <label>Find recipe by name:</label>
+	        <input type="text" ng-model="searchKey">
+	        <button ng-click="findRecipe()">Find recipe</button>
+	    </form>
+		<br>
+	    <table>
+	        <tr>
+	            <th>Id</th>
+	            <th>Name</th>
+	            <th>Description</th>
+	        </tr>
+	        <tr ng-repeat="recipe in recipes">
+	            <td>{{recipe.id}}</td>
+	            <td>{{recipe.name}}</td>
+	            <td>{{recipe.desc}}</td>
+	        </tr>
+	    </table>
+	</div>
+	
+</body>
+</html>
